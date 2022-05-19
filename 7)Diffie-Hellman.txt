@@ -1,0 +1,38 @@
+//Diffie-Hellman Key Exchange Algorithm
+ 
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int prime,pt,person1,person2,key1,key2;
+    cout<<"Enter prime number(prime):";
+    cin>>prime;
+    cout<<"Enter premitive number(pt):";
+    cin>>pt;
+    cout<<"Enter private value for person 1:";
+    cin>>person1;
+    cout<<"Enter private value for person 2:";
+    cin>>person2;
+    
+    
+   int temp1=(pow(pt,person1));
+   key1=temp1%prime;
+   
+   int temp2=(pow(pt,person2));
+   key2=temp2%prime;
+   
+    int person1_key,person2_key;
+   
+    
+    int temp3=pow(key2,person1);
+    person1_key=temp3%prime;
+    
+    int temp4=pow(key1,person2);
+    person2_key=temp4%prime;
+    
+    cout<<"Secrete Key:"<<endl;
+    cout<<person1_key<<endl;
+    cout<<person2_key;
+    return 0;
+}

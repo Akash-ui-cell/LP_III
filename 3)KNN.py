@@ -1,0 +1,39 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri May 13 09:46:52 2022
+
+@author: DELL
+"""
+
+#import the packages
+import pandas as pd
+import numpy as np
+
+
+#Read dataset
+dataset=pd.read_csv("3)kdata.csv")
+X=dataset.iloc[:,:-1].values
+y=dataset.iloc[:,2].values
+print(X)
+print(y)
+
+
+
+#import KNeighborshood Classifier and create object of it
+from sklearn.neighbors import KNeighborsClassifier
+classifier=KNeighborsClassifier(n_neighbors=3)
+classifier.fit(X,y)
+
+
+#predict the class for the point(6,6)
+X_test=np.array([6,2])
+y_pred=classifier.predict([X_test])
+print('General KNN',y_pred)
+
+
+classifier=KNeighborsClassifier(n_neighbors=3,weights='distance')
+classifier.fit(X,y)
+#predict the class for the point(6,6)
+X_test=np.array([6,2])
+y_pred=classifier.predict([X_test])
+print('Distance Weighted KNN',y_pred)
